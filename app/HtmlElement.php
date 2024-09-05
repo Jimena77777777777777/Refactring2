@@ -1,42 +1,37 @@
 <?php  
 namespace App;  
 
+class HtmlElement {  
 
-class HtmlElement 
-{  
-private $name,$content,$attributes;
+    private $name;
+    private $content;
+    private $attributes;
 
-
-    public function __construct(string $name,array $attributes=[], $content = null)
+    public function __construct(string $name, array $attributes=[],  $content = null)
     {
-        $this->attributes =$attributes;
-        $this->name =$name;
-        $this->content=$content;
-        
+        $this->name = $name;
+        $this->content = $content;
+        $this->attributes = $attributes;
     }
 
+   
     public function render()
     {
-
-        if (! empty($this->attributes)){
-
-            $htmlAttributes='';
-
-            foreach($this->attributes as $name => $value){
-                $htmlAttributes .= $name.'="'.$value.'"';
-            }
-
-            $result ='<'.$this->name.' '.$htmlAttributes.   '>';
-        }else {
+        if(! empty($this->attributes) ){
+            $result ='<'.$this->name.'>';
+        } else {
             $result ='<'.$this->name.'>';
         }
-       
-       
 
-        $result.= $this->content;
-     
+        // elemento con atributos abrimos la etiqueta con agributos
+       
+        //caso cobtrario
+       
+        $result .= $this->content;  
+        $result .= '</' . $this->name . '>';
 
-        $result .= '</'.$this->name.'>';
+        
+
         return $result;
-    }
+    }  
 }
