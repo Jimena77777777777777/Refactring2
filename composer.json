@@ -1,0 +1,21 @@
+{
+    "name": "alejandra/refactring2",
+    "description": "Seong refactory",
+    "type": "proyect",
+    "license": "utea",
+   
+    "authors": [
+        {
+            "name": "Seong"
+        }
+    ],
+    "require": {},
+
+    "autoload": {  
+        "psr-4": {  
+            "App\\": "app/"  
+        }  
+    } 
+    
+}
+    
