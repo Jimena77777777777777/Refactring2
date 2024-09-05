@@ -18,7 +18,9 @@ class HtmlElement {
     public function render()
     {
         if(! empty($this->attributes) ){
-            $result ='<'.$this->name.'>';
+           $htmlAttributes='';
+           
+            $result ='<'.$this->name.$htmlAttributes.'>';
         } else {
             $result ='<'.$this->name.'>';
         }
