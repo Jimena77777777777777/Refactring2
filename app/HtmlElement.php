@@ -20,15 +20,27 @@ class HtmlElement {
         if(! empty($this->attributes) ){
            $htmlAttributes='';
            
+           foreach($this->attributes as $attribute=>$value){
+
+            if(is_numeric($attribute)){
+                $htmlAttributes.=' '.$value;
+            } else{
+                
+            $htmlAttributes .='  ' .$attribute.'="'.htmlentities($value, ENT_QUOTES,'UTF-8').'"';
+            }
+
+           }
+
             $result ='<'.$this->name.$htmlAttributes.'>';
         } else {
             $result ='<'.$this->name.'>';
         }
 
-        // elemento con atributos abrimos la etiqueta con agributos
-       
-        //caso cobtrario
-       
+       if(in_array($this->name,['br','hr', 'img', 'input','meta'])){
+        return $result;
+       }
+
+
         $result .= $this->content;  
         $result .= '</' . $this->name . '>';
 
